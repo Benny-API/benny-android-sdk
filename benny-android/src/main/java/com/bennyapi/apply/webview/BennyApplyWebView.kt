@@ -34,6 +34,7 @@ internal class BennyApplyWebView(
 
         settings.apply {
             javaScriptEnabled = true
+            domStorageEnabled = true
         }
 
         addJavascriptInterface(BennyApplyJavascriptInterface(listener), "MobileSdk")
