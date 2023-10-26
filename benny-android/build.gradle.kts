@@ -9,7 +9,7 @@ plugins {
 val sdkVersion = "1.0.0"
 
 android {
-    namespace = "com.bennyapi.benny"
+    namespace = "com.bennyapi.android"
     compileSdk = 34
     defaultConfig {
         minSdk = 24
@@ -50,7 +50,7 @@ publishing {
     publications {
         register<MavenPublication>("release") {
             groupId = "com.bennyapi"
-            artifactId = "benny"
+            artifactId = "android"
             version = "$sdkVersion-SNAPSHOT"
             afterEvaluate {
                 from(components["release"])
