@@ -29,4 +29,18 @@ class BennyApplyFlow(
     fun start(externalId: String) {
         webView.start(externalId = externalId)
     }
+
+    /**
+     * Go's back in the Benny Apply flow,
+     * returning true if the flow went
+     * back, false if it could not.
+     */
+    fun goBack(): Boolean {
+        return if (webView.canGoBack()) {
+            webView.goBack()
+            true
+        } else {
+            false
+        }
+    }
 }
