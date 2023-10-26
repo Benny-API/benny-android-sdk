@@ -3,15 +3,19 @@ import org.gradle.api.JavaVersion.VERSION_17
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    `maven-publish`
 }
 
-val version = "1.0.0"
+val sdkVersion = "1.0.0"
 
 android {
     namespace = "com.bennyapi.benny"
     compileSdk = 34
     defaultConfig {
         minSdk = 24
+        aarMetadata {
+            minCompileSdk = 24
+        }
     }
     buildFeatures {
         buildConfig = true
@@ -22,10 +26,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "VERSION", "\"${version}\"")
+            buildConfigField("String", "VERSION", "\"${sdkVersion}\"")
         }
         debug {
-            buildConfigField("String", "VERSION", "\"${version}\"")
+            buildConfigField("String", "VERSION", "\"${sdkVersion}\"")
         }
     }
     compileOptions {
@@ -34,6 +38,24 @@ android {
     }
     kotlin {
         jvmToolchain(17)
+    }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.bennyapi"
+            artifactId = "benny"
+            version = "$sdkVersion-SNAPSHOT"
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
     }
 }
 
