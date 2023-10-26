@@ -1,9 +1,10 @@
 package com.bennyapi
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.bennyapi.apply.BennyApplyFlow
 import com.bennyapi.apply.BennyApplyListener
 import com.bennyapi.apply.BennyApplyParameters
@@ -11,7 +12,7 @@ import com.bennyapi.apply.BennyApplyParameters.Credentials
 
 private const val LOG_TAG = "Benny"
 
-class MainActivity : Activity(), BennyApplyListener {
+class MainActivity : AppCompatActivity(), BennyApplyListener {
 
     private lateinit var flow: BennyApplyFlow
 
@@ -29,6 +30,14 @@ class MainActivity : Activity(), BennyApplyListener {
             ),
         )
         findViewById<LinearLayout>(R.id.main_layout).addView(flow)
+
+        onBackPressedDispatcher.addCallback(
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    flow.goBack()
+                }
+            },
+        )
     }
 
     override fun onStart() {

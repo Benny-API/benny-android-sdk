@@ -46,5 +46,6 @@ android {
 dependencies {
     implementation(project(":benny-android"))
     implementation(libs.androidx.core.ktx)
+    implementation(libs.appcompat)
 }
 
