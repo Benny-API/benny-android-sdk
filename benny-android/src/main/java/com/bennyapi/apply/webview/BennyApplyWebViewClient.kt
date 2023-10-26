@@ -4,7 +4,7 @@ import android.content.Intent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.bennyapi.benny.BuildConfig.VERSION
+import com.bennyapi.android.BuildConfig.VERSION
 
 internal class BennyApplyWebViewClient(
     private val organizationId: String,
