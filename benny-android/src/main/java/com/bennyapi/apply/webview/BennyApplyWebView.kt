@@ -9,8 +9,8 @@ import com.bennyapi.apply.BennyApplyParameters
 import com.bennyapi.apply.BennyApplyParameters.Options.Environment.PRODUCTION
 import com.bennyapi.apply.BennyApplyParameters.Options.Environment.STAGING
 
-private const val BENNY_APPLY_PRODUCTION_URL = "http://10.0.2.2:3000"
-private const val BENNY_APPLY_STAGING_URL = "http://10.0.2.2:3000"
+private const val BENNY_APPLY_PRODUCTION_URL = "https://apply.bennyapi.com"
+private const val BENNY_APPLY_STAGING_URL = "https://apply-dev.bennyapi.com"
 
 @SuppressLint("SetJavaScriptEnabled", "ViewConstructor")
 internal class BennyApplyWebView(
