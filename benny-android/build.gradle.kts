@@ -1,9 +1,10 @@
+import com.vanniktech.maven.publish.SonatypeHost.Companion.S01
 import org.gradle.api.JavaVersion.VERSION_17
 
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    `maven-publish`
+    alias(libs.plugins.maven.publish)
 }
 
 val sdkVersion = "1.0.0"
@@ -39,22 +40,40 @@ android {
     kotlin {
         jvmToolchain(17)
     }
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-    }
 }
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "com.bennyapi"
-            artifactId = "android"
-            version = "$sdkVersion-SNAPSHOT"
-            afterEvaluate {
-                from(components["release"])
+mavenPublishing {
+    publishToMavenCentral(S01)
+    signAllPublications()
+    coordinates(
+        groupId = "com.bennyapi",
+        artifactId = "android",
+        version = "$sdkVersion-SNAPSHOT"
+    )
+    pom {
+        name.set("Benny Android SDK")
+        description.set("Benny Android SDK")
+        inceptionYear.set("2023")
+        url.set("https://github.com/Benny-API/benny-android-sdk")
+
+        licenses {
+            license {
+                name.set("MIT License")
+                url.set("https://github.com/Benny-API/benny-android-sdk/blob/main/LICENSE")
+                distribution.set("https://github.com/Benny-API/benny-android-sdk/blob/main/LICENSE")
             }
+        }
+        developers {
+            developer {
+                id.set("Benny-API")
+                name.set("Benny-API")
+                url.set("https://github.com/Benny-API")
+            }
+        }
+        scm {
+            url.set("https://github.com/Benny-API/benny-android-sdk")
+            connection.set("scm:git://github.com/Benny-API/benny-android-sdk.git")
+            developerConnection.set("scm:git:ssh://git@github.com/Benny-API/benny-android-sdk.git")
         }
     }
 }
