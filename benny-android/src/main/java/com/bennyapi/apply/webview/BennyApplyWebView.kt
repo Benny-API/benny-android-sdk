@@ -25,7 +25,6 @@ internal class BennyApplyWebView(
         layoutParams = LayoutParams(MATCH_PARENT, MATCH_PARENT)
         bennyApplyWebViewClient = BennyApplyWebViewClient(
             organizationId = parameters.credentials.organizationId,
-            clientSecret = parameters.credentials.clientSecret,
         )
         webViewClient = bennyApplyWebViewClient
         setWebContentsDebuggingEnabled(parameters.options.isDebuggingEnabled)

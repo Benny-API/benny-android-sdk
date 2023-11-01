@@ -8,7 +8,6 @@ import com.bennyapi.android.BuildConfig.VERSION
 
 internal class BennyApplyWebViewClient(
     private val organizationId: String,
-    private val clientSecret: String,
 ) : WebViewClient() {
 
     var externalId: String? = null
@@ -25,7 +24,6 @@ internal class BennyApplyWebViewClient(
                     type: 'BENNY_APPLY_INIT',
                     payload: {
                         organizationId: '$organizationId',
-                        clientSecret: '$clientSecret',
                         externalId: '$externalId',
                         sdk: 'android',
                         platform: 'android',
