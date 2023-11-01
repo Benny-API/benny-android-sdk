@@ -32,18 +32,13 @@ data class BennyApplyParameters(
     }
 
     /**
-     * Credentials used to authenticate the Benny Apply
-     * flow as well as correctly attribute any conversions.
+     * Credentials used to correctly attribute
+     * any conversions to your organization.
      */
     data class Credentials(
         /**
          * The organization ID. Prefixes with "org_".
          */
         val organizationId: String,
-
-        /**
-         * The client secret. Prefixes with "clientsec_".
-         */
-        val clientSecret: String,
     )
 }

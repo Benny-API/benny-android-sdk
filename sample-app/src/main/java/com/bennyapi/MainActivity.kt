@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity(), BennyApplyListener {
             parameters = BennyApplyParameters(
                 credentials = Credentials(
                     organizationId = "",
-                    clientSecret = "",
                 ),
             ),
         )

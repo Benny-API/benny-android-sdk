@@ -23,12 +23,12 @@ Install the SDK using the Maven Central Repository.
     ```
 
 ### Usage
-#### Required IDs and Secrets
-You'll need an `organizationId`, the ID representing your company or organization, along with your `clientSecret`, a semi-secret API
-key that can be bundled into your app.
+#### Required IDs
+You'll need an `organizationId`, the ID representing your company or organization and
+ensure correct attribution.
 
 > **Note**
-> Reach out to [help@bennyapi.com](help@bennyapi.com) to setup your organization and API credentials.
+> Reach out to [help@bennyapi.com](help@bennyapi.com) to setup your organization.
 
 #### Integration
 The Benny Apply flow is contained in a simple view, `BennyApplyFlow`. This view can be programmatically added to any Android Activity or Fragment
@@ -41,7 +41,6 @@ val flow = BennyApplyFlow(
     parameters = BennyApplyParameters(
         credentials = Credentials(
             organizationId = "org_123",
-            clientSecret = "clientsec_123",
         ),
     ),
 )
