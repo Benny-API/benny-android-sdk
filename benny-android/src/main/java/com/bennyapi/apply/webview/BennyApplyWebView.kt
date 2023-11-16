@@ -42,6 +42,6 @@ internal class BennyApplyWebView(
     }
 
     internal fun start(externalId: String) {
-        loadUrl("$baseUrl$organizationId&externalId=$externalId&isWebView=true")
+        loadUrl("$baseUrl?$organizationId&externalId=$externalId&isWebView=true")
     }
 }
