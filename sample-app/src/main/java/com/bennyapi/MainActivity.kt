@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bennyapi.apply.BennyApplyFlow
 import com.bennyapi.apply.BennyApplyListener
 import com.bennyapi.apply.BennyApplyParameters
-import com.bennyapi.apply.BennyApplyParameters.Credentials
 
 private const val LOG_TAG = "Benny"
 
@@ -23,9 +22,7 @@ class MainActivity : AppCompatActivity(), BennyApplyListener {
             context = applicationContext,
             listener = this,
             parameters = BennyApplyParameters(
-                credentials = Credentials(
-                    organizationId = "",
-                ),
+                organizationId = "",
             ),
         )
         findViewById<LinearLayout>(R.id.main_layout).addView(flow)
