@@ -4,40 +4,8 @@ import android.content.Intent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.bennyapi.android.BuildConfig.VERSION
 
-internal class BennyApplyWebViewClient(
-    private val organizationId: String,
-) : WebViewClient() {
-
-    var externalId: String? = null
-
-    override fun onPageFinished(view: WebView?, url: String?) {
-        if (view == null || externalId == null) {
-            return
-        }
-        val script =
-            """
-            try {
-                window.addEventListener('message', console.log);
-                window.postMessage({
-                    type: 'BENNY_APPLY_INIT',
-                    payload: {
-                        organizationId: '$organizationId',
-                        externalId: '$externalId',
-                        sdk: 'android',
-                        platform: 'android',
-                        version: '$VERSION'
-                    }
-                }, "*");
-            } catch (err) {
-                console.error(err);
-            }
-            """.trimIndent()
-
-        view.loadUrl("javascript:(function f() {$script})()")
-    }
-
+internal class BennyApplyWebViewClient : WebViewClient() {
     override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
         view.context.startActivity(Intent(Intent.ACTION_VIEW, request.url))
         return true

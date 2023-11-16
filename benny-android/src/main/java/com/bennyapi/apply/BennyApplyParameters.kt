@@ -3,7 +3,10 @@ package com.bennyapi.apply
 import com.bennyapi.apply.BennyApplyParameters.Options.Environment.PRODUCTION
 
 data class BennyApplyParameters(
-    val credentials: Credentials,
+    /**
+     * The organization ID. Prefixed with "org_".
+     */
+    val organizationId: String,
     val options: Options = Options(),
 ) {
     /**
@@ -30,15 +33,4 @@ data class BennyApplyParameters(
             STAGING,
         }
     }
-
-    /**
-     * Credentials used to correctly attribute
-     * any conversions to your organization.
-     */
-    data class Credentials(
-        /**
-         * The organization ID. Prefixes with "org_".
-         */
-        val organizationId: String,
-    )
 }

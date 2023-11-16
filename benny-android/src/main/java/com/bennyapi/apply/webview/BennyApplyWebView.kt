@@ -9,9 +9,6 @@ import com.bennyapi.apply.BennyApplyParameters
 import com.bennyapi.apply.BennyApplyParameters.Options.Environment.PRODUCTION
 import com.bennyapi.apply.BennyApplyParameters.Options.Environment.STAGING
 
-private const val BENNY_APPLY_PRODUCTION_URL = "https://apply.bennyapi.com"
-private const val BENNY_APPLY_STAGING_URL = "https://apply-dev.bennyapi.com"
-
 @SuppressLint("SetJavaScriptEnabled", "ViewConstructor")
 internal class BennyApplyWebView(
     context: Context,
@@ -19,13 +16,12 @@ internal class BennyApplyWebView(
     parameters: BennyApplyParameters,
 ) : WebView(context) {
     private val baseUrl: String
+    private val organizationId: String
     private val bennyApplyWebViewClient: BennyApplyWebViewClient
 
     init {
         layoutParams = LayoutParams(MATCH_PARENT, MATCH_PARENT)
-        bennyApplyWebViewClient = BennyApplyWebViewClient(
-            organizationId = parameters.credentials.organizationId,
-        )
+        bennyApplyWebViewClient = BennyApplyWebViewClient()
         webViewClient = bennyApplyWebViewClient
         setWebContentsDebuggingEnabled(parameters.options.isDebuggingEnabled)
         isVerticalScrollBarEnabled = false
@@ -39,13 +35,13 @@ internal class BennyApplyWebView(
         addJavascriptInterface(BennyApplyJavascriptInterface(listener), "MobileSdk")
 
         baseUrl = when (parameters.options.environment) {
-            PRODUCTION -> BENNY_APPLY_PRODUCTION_URL
-            STAGING -> BENNY_APPLY_STAGING_URL
+            PRODUCTION -> "https://apply.bennyapi.com"
+            STAGING -> "https://apply-staging.bennyapi.com"
         }
+        organizationId = parameters.organizationId
     }
 
     internal fun start(externalId: String) {
-        bennyApplyWebViewClient.externalId = externalId
-        loadUrl(baseUrl)
+        loadUrl("$baseUrl$organizationId&externalId=$externalId&isWebView=true")
     }
 }

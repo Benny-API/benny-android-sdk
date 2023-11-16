@@ -38,11 +38,7 @@ or wrapped in AndroidView if leveraged in a Compose UI app.
 val flow = BennyApplyFlow(
     context = context,
     listener = listener,
-    parameters = BennyApplyParameters(
-        credentials = Credentials(
-            organizationId = "org_123",
-        ),
-    ),
+    parameters = BennyApplyParameters(organizationId = "org_123")
 )
 ```
 
