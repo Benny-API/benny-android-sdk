@@ -1,9 +1,12 @@
 package com.bennyapi.apply.webview
 
 import android.annotation.SuppressLint
+import android.content.ClipboardManager
 import android.content.Context
+import android.content.Context.CLIPBOARD_SERVICE
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.webkit.WebView
+import androidx.core.content.ContextCompat.getSystemService
 import com.bennyapi.apply.BennyApplyListener
 import com.bennyapi.apply.BennyApplyParameters
 import com.bennyapi.apply.BennyApplyParameters.Options.Environment.PRODUCTION
@@ -16,6 +19,7 @@ internal class BennyApplyWebView(
     parameters: BennyApplyParameters,
 ) : WebView(activityContext) {
     private val baseUrl: String
+    private val clipboard = activityContext.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
     private val organizationId: String
     private val bennyApplyWebViewClient: BennyApplyWebViewClient
 
@@ -32,7 +36,7 @@ internal class BennyApplyWebView(
             domStorageEnabled = true
         }
 
-        addJavascriptInterface(BennyApplyJavascriptInterface(listener), "MobileSdk")
+        addJavascriptInterface(BennyApplyJavascriptInterface(listener, clipboard), "MobileSdk")
 
         baseUrl = when (parameters.options.environment) {
             PRODUCTION -> "https://apply.bennyapi.com"
