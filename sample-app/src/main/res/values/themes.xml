@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.BennyApply" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="Theme.BennyApply" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/blue</item>
+        <item name="colorPrimary">@color/blue</item>
+    </style>
 </resources>
