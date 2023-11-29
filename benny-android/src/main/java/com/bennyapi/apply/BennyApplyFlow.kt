@@ -1,21 +1,18 @@
 package com.bennyapi.apply
 
-import android.content.Context
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.widget.FrameLayout
 import android.widget.FrameLayout.LayoutParams.MATCH_PARENT
 import com.bennyapi.apply.webview.BennyApplyWebView
 
+@SuppressLint("ViewConstructor")
 class BennyApplyFlow(
-    context: Context,
-    listener: BennyApplyListener?,
-    parameters: BennyApplyParameters?,
-) : FrameLayout(context) {
-    private val webView = BennyApplyWebView(context, listener!!, parameters!!)
-
-    /**
-     * Default constructor to enable view development or snapshot testing
-     */
-    constructor(context: Context) : this(context, null, null)
+    activity: Activity,
+    listener: BennyApplyListener,
+    parameters: BennyApplyParameters,
+) : FrameLayout(activity) {
+    private val webView = BennyApplyWebView(activity, listener, parameters)
 
     init {
         layoutParams = LayoutParams(MATCH_PARENT, MATCH_PARENT)
