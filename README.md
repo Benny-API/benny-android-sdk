@@ -32,11 +32,13 @@ ensure correct attribution.
 
 #### Integration
 The Benny Apply flow is contained in a simple view, `BennyApplyFlow`. This view can be programmatically added to any Android Activity or Fragment
-or wrapped in AndroidView if leveraged in a Compose UI app.
+or wrapped in AndroidView if leveraged in a Compose UI app. 
+
+An `Activity` Context is required to ensure that the WebView date, dropdown, and other inputs function correctly.
 
 ```Kotlin
 val flow = BennyApplyFlow(
-    context = context,
+    activity = activity,
     listener = listener,
     parameters = BennyApplyParameters(organizationId = "org_123")
 )
