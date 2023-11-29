@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), BennyApplyListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
         flow = BennyApplyFlow(
-            context = applicationContext,
+            activity = this,
             listener = this,
             parameters = BennyApplyParameters(
                 organizationId = "",

@@ -11,10 +11,10 @@ import com.bennyapi.apply.BennyApplyParameters.Options.Environment.STAGING
 
 @SuppressLint("SetJavaScriptEnabled", "ViewConstructor")
 internal class BennyApplyWebView(
-    context: Context,
+    activityContext: Context,
     listener: BennyApplyListener,
     parameters: BennyApplyParameters,
-) : WebView(context) {
+) : WebView(activityContext) {
     private val baseUrl: String
     private val organizationId: String
     private val bennyApplyWebViewClient: BennyApplyWebViewClient
