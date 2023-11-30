@@ -1,3 +1,5 @@
+![Maven Central](https://img.shields.io/maven-central/v/com.bennyapi/android)
+
 # Benny Android SDK
 The Benny Android SDK allows your Android app to start and communicate with the Benny Apply flow.
 
