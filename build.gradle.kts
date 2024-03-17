@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.application") version "8.1.3" apply false
+    id("com.android.application") version "8.3.0" apply false
     id("org.jetbrains.kotlin.android") version "1.8.10" apply false
-    id("com.android.library") version "8.1.3" apply false
+    id("com.android.library") version "8.3.0" apply false
     id("com.diffplug.spotless") version "6.22.0" apply true
     id("com.github.ben-manes.versions") version "0.49.0" apply true
 }
