@@ -90,6 +90,10 @@ interface EbtBalanceLinkFlowListener {
 
 An implementation of this listener is a required constructor argument for `EbtBalanceLinkFlow`.
 
+##### Environments
+Set the environment to `SANDBOX` to integrate with the Benny sandbox environment,
+or omit to default to the production environment.
+
 #### Handling Browser Navigation
 
 The `EbtBalanceLinkFlow` exposes a `goBack()` method that will have the flow navigate back when
