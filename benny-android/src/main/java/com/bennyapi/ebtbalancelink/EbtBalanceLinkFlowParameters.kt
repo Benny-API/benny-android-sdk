@@ -1,8 +1,8 @@
-package com.bennyapi.apply
+package com.bennyapi.ebtbalancelink
 
-import com.bennyapi.apply.BennyApplyParameters.Options.Environment.PRODUCTION
+import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters.Options.Environment.PRODUCTION
 
-data class BennyApplyParameters(
+data class EbtBalanceLinkFlowParameters(
     /**
      * The organization ID. Prefixed with "org_".
      */
@@ -11,26 +11,24 @@ data class BennyApplyParameters(
 ) {
     /**
      * Options to help developers with integrating
-     * Benny Apply into their Android app.
+     * the EBT Balance Flow into their Android app.
      */
     data class Options(
         /**
-         * If true, [setWebContentsDebuggingEnabled] will be enabled
+         * If true, "setWebContentsDebuggingEnabled" will be enabled
          * to allow debugging of the WebView in Chrome Developer Tools.
          */
         val isDebuggingEnabled: Boolean = false,
 
         /**
          * Which Benny API environment to use. By
-         * default this is [PRODUCTION]. Client
-         * secrets and organization IDs are scoped by
-         * API environment.
+         * default this is [PRODUCTION].
          */
         val environment: Environment = PRODUCTION,
     ) {
         enum class Environment {
             PRODUCTION,
-            STAGING,
+            SANDBOX,
         }
     }
 }

@@ -1,18 +1,18 @@
-package com.bennyapi.apply
+package com.bennyapi.ebtbalancelink
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.widget.FrameLayout
 import android.widget.FrameLayout.LayoutParams.MATCH_PARENT
-import com.bennyapi.apply.webview.BennyApplyWebView
+import com.bennyapi.ebtbalancelink.webview.EbtBalanceLinkWebView
 
 @SuppressLint("ViewConstructor")
-class BennyApplyFlow(
+class EbtBalanceLinkFlow(
     activity: Activity,
-    listener: BennyApplyListener,
-    parameters: BennyApplyParameters,
+    listener: EbtBalanceLinkFlowListener,
+    parameters: EbtBalanceLinkFlowParameters,
 ) : FrameLayout(activity) {
-    private val webView = BennyApplyWebView(activity, listener, parameters)
+    private val webView = EbtBalanceLinkWebView(activity, listener, parameters)
 
     init {
         layoutParams = LayoutParams(MATCH_PARENT, MATCH_PARENT)
@@ -20,15 +20,15 @@ class BennyApplyFlow(
     }
 
     /**
-     * Starts the Benny Apply flow
-     * with the unique [externalId].
+     * Starts the EBT Balance Link flow
+     * with the unique [temporaryLink].
      */
-    fun start(externalId: String) {
-        webView.start(externalId = externalId)
+    fun start(temporaryLink: String) {
+        webView.start(temporaryLink = temporaryLink)
     }
 
     /**
-     * Go's back in the Benny Apply flow,
+     * Go's back in the EBT Balance Link flow,
      * returning true if the flow went
      * back, false if it could not.
      */
