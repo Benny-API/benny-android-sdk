@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.maven.publish)
 }
 
-val sdkVersion = "1.0.0"
+val sdkVersion = "1.1.0"
 
 android {
     namespace = "com.bennyapi.android"
