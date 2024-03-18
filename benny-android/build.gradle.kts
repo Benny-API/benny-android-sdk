@@ -48,7 +48,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.bennyapi",
         artifactId = "android",
-        version = "$sdkVersion-SNAPSHOT"
+        version = "$sdkVersion"
     )
     pom {
         name.set("Benny Android SDK")
