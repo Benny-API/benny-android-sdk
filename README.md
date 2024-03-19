@@ -7,7 +7,7 @@ The Benny Android SDK allows your Android app to use Benny client libraries.
 > **Note**
 > See our complete documentation at [docs.bennyapi.com](https://docs.bennyapi.com).
 
-### Installation
+## Installation
 
 Install the SDK using the Maven Central Repository.
 
@@ -25,16 +25,13 @@ Install the SDK using the Maven Central Repository.
         implementation("com.bennyapi:benny-android:1.1.0")
     }
     ```
-
-## Usage
-
-### EBT Balance Link Flow
+## EBT Balance Link Flow
 
 The Ebt Balance Link Flow allows users to link their EBT account, verifying the account, and
 returning a tokenized representation of the credentials for fetching balance and transaction
 information.
 
-#### Required IDs
+### Required IDs
 
 You'll need an `organizationId`, the ID representing your organization, along with
 a `temporarylink` that is generated serverside via a call to the Benny API.
@@ -42,7 +39,7 @@ a `temporarylink` that is generated serverside via a call to the Benny API.
 > **Note**
 > Reach out to [help@bennyapi.com](help@bennyapi.com) to set up your organization.
 
-#### Integration
+### Integration
 
 The Ebt Balance Link Flow is contained in a simple view, `EbtBalanceLinkFlow`, that
 is initialized with your organization ID and the single-use temporary link.
@@ -62,7 +59,7 @@ val flow = EbtBalanceLinkFlow(
 )
 ```
 
-#### Starting the Flow
+### Starting the Flow
 
 To start the flow, invoke:
 
@@ -72,7 +69,7 @@ flow.start(temporaryLink = "temp_clr0vujq9000108l66odc7fxv")
 
 See [Sample App](sample-app) as an example integration.
 
-#### Listening for Flow Events
+### Listening for Flow Events
 
 The `EbtBalanceLinkFlowListener` is responsible for communicating to your Android app when the
 user wants to exit the flow and when a link is successful.
@@ -86,21 +83,21 @@ interface EbtBalanceLinkFlowListener {
 
 An implementation of this listener is a required constructor argument for `EbtBalanceLinkFlow`.
 
-##### Environments
+### Environments
 Set the environment to `SANDBOX` to integrate with the Benny sandbox environment,
 or omit to default to the production environment.
 
-#### Handling Browser Navigation
+### Handling Browser Navigation
 
 The `EbtBalanceLinkFlow` exposes a `goBack()` method that will have the flow navigate back when
 invoked
 on a hardware back press or gesture.
 If the flow cannot go back further, this method will return false.
 
-### Author
+## Author
 
 [Benny API Inc.](https://bennyapi.com)
 
-### License
+## License
 
 The Benny SDK is available under the MIT license.
