@@ -70,10 +70,6 @@ To start the flow, invoke:
 flow.start(temporaryLink = "temp_clr0vujq9000108l66odc7fxv")
 ```
 
-Where `externalId` is a non-empty string without spaces that is your organization's unique
-representation of a user.
-This ID is important to ensure that flow state can be tracked and restored.
-
 See [Sample App](sample-app) as an example integration.
 
 #### Listening for Flow Events
