@@ -8,7 +8,7 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-val sdkVersion = "1.1.0"
+val sdkVersion = "1.1.1"
 
 android {
     namespace = "com.bennyapi.android"
@@ -49,7 +49,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.bennyapi",
         artifactId = "android",
-        version = "$sdkVersion"
+        version = sdkVersion
     )
     pom {
         name.set("Benny Android SDK")
