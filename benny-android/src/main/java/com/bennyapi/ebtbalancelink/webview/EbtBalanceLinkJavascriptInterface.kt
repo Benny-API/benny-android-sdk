@@ -9,6 +9,12 @@ import android.net.Uri.parse
 import android.webkit.JavascriptInterface
 import androidx.core.content.ContextCompat.startActivity
 import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowListener
+import kotlinx.serialization.json.Json
+
+private val json = Json {
+    ignoreUnknownKeys = true
+    encodeDefaults = true
+}
 
 internal class EbtBalanceLinkJavascriptInterface(
     private val listener: EbtBalanceLinkFlowListener,
@@ -23,6 +29,12 @@ internal class EbtBalanceLinkJavascriptInterface(
     @JavascriptInterface
     fun onExit() = listener.onExit()
 
+    @JavascriptInterface
+    fun onLinkResult(resultJsonString: String) = listener.onLinkResult(json.decodeFromString(resultJsonString))
+
+    /**
+     * @deprecated use [onLinkResult].
+     */
     @JavascriptInterface
     fun onLinkSuccess(linkToken: String) = listener.onLinkSuccess(linkToken = linkToken)
 

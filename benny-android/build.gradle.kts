@@ -5,6 +5,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     alias(libs.plugins.maven.publish)
+    kotlin("plugin.serialization")
 }
 
 val sdkVersion = "1.1.0"
@@ -80,4 +81,5 @@ mavenPublishing {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlin.serialization)
 }

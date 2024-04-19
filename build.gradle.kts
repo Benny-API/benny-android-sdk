@@ -4,6 +4,7 @@ plugins {
     id("com.android.library") version "8.3.0" apply false
     id("com.diffplug.spotless") version "6.22.0" apply true
     id("com.github.ben-manes.versions") version "0.49.0" apply true
+    kotlin("plugin.serialization") version "1.9.22" apply false
 }
 
 spotless {

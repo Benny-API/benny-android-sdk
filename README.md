@@ -22,7 +22,7 @@ Install the SDK using the Maven Central Repository.
 
     ```Gradle
     dependencies {
-        implementation("com.bennyapi:benny-android:1.1.0")
+        implementation("com.bennyapi:benny-android:1.1.1")
     }
     ```
 
@@ -79,12 +79,12 @@ See [Sample App](sample-app) as an example integration.
 #### Listening for Flow Events
 
 The `EbtBalanceLinkFlowListener` is responsible for communicating to your Android app when the
-user wants to exit the flow and when a link is successful.
+user wants to exit the flow and on link result.
 
 ```Kotlin
 interface EbtBalanceLinkFlowListener {
     fun onExit()
-    fun onLinkSuccess(linkToken: String)
+    fun onLinkResult(linkToken: String)
 }
 ```
 

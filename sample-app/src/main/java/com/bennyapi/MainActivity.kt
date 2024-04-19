@@ -10,6 +10,7 @@ import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowListener
 import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters
 import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters.Options
 import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters.Options.Environment.SANDBOX
+import com.bennyapi.ebtbalancelink.result.LinkResult
 
 private const val LOG_TAG = "Benny"
 
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity(), EbtBalanceLinkFlowListener {
         Log.d(LOG_TAG, "onExit called.")
     }
 
-    override fun onLinkSuccess(linkToken: String) {
-        Log.d(LOG_TAG, "onLinkSuccess called: $linkToken.")
+    override fun onLinkResult(result: LinkResult) {
+        Log.d(LOG_TAG, "onLinkResult called: $result.")
     }
 }
