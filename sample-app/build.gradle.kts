@@ -35,6 +35,12 @@ android {
     kotlin {
         jvmToolchain(17)
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.13"
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -43,7 +49,19 @@ android {
 }
 
 dependencies {
-    implementation(project(":benny-android"))
+    implementation(platform(libs.androidx.compose.bom))
+
+    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.appcompat)
+
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    debugImplementation(libs.androidx.ui.tooling)
+
+    implementation(project(":benny-android"))
 }

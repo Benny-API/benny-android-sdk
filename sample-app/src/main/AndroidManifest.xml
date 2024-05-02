@@ -22,6 +22,9 @@
 
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EbtBalanceLinkActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BennyApply" />
     </application>
-
 </manifest>

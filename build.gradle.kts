@@ -20,7 +20,13 @@ subprojects {
 
 spotless {
     kotlin {
-        ktlint("1.2.1").editorConfigOverride(mapOf("android" to "true"))
+        ktlint("1.2.1")
+            .editorConfigOverride(
+                mapOf(
+                    "android" to "true",
+                    "ktlint_function_naming_ignore_when_annotated_with" to "Composable",
+                ),
+            )
         target("**/*.kt")
         targetExclude("build/generated/**")
         endWithNewline()
