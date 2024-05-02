@@ -1,55 +1,73 @@
 package com.bennyapi
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.LinearLayout
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
-import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlow
-import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowListener
-import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters
-import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters.Options
-import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters.Options.Environment.SANDBOX
-import com.bennyapi.ebtbalancelink.result.LinkResult
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement.Center
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.bennyapi.ui.theme.BennyApplicationTheme
 
-private const val LOG_TAG = "Benny"
-
-class MainActivity : AppCompatActivity(), EbtBalanceLinkFlowListener {
-
-    private lateinit var flow: EbtBalanceLinkFlow
-
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main)
-        flow = EbtBalanceLinkFlow(
-            activity = this,
-            listener = this,
-            parameters = EbtBalanceLinkFlowParameters(
-                organizationId = "org_wup29bz683g8habsxvazvyz1",
-                options = Options(environment = SANDBOX),
-            ),
-        )
-        findViewById<LinearLayout>(R.id.main_layout).addView(flow)
-
-        onBackPressedDispatcher.addCallback(
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    flow.goBack()
-                }
-            },
-        )
+        enableEdgeToEdge()
+        setContent {
+            MainScreen()
+        }
     }
+}
 
-    override fun onStart() {
-        super.onStart()
-        flow.start(temporaryLink = "temp_clr0vujq9000108l66odc7fxv")
+@Composable
+fun MainScreen() {
+    BennyApplicationTheme {
+        Scaffold(modifier = Modifier.fillMaxSize()) {
+            Column(
+                verticalArrangement = Center,
+                modifier = Modifier
+                    .padding(it)
+                    .fillMaxSize(),
+            ) {
+                LaunchButton(text = "Launch EBT Balance Link")
+            }
+        }
     }
+}
 
-    override fun onExit() {
-        Log.d(LOG_TAG, "onExit called.")
+@Composable
+fun LaunchButton(
+    text: String,
+    modifier: Modifier = Modifier,
+) {
+    val context = LocalContext.current
+    Button(
+        shape = RoundedCornerShape(4.dp),
+        modifier = modifier
+            .padding(16.dp)
+            .height(52.dp)
+            .fillMaxWidth(),
+        onClick = { context.startActivity(Intent(context, EbtBalanceLinkActivity::class.java)) },
+    ) {
+        Text(text)
     }
+}
 
-    override fun onLinkResult(result: LinkResult) {
-        Log.d(LOG_TAG, "onLinkResult called: $result.")
-    }
+@Preview(showBackground = true)
+@Composable
+fun MainScreenPreview() {
+    MainScreen()
 }
