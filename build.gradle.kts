@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.serialization) apply false
+    alias(libs.plugins.paparazzi) apply false
     alias(libs.plugins.spotless)
     alias(libs.plugins.version.catalog.update)
     alias(libs.plugins.versions)
@@ -15,7 +16,30 @@ allprojects {
 }
 
 subprojects {
+    apply(plugin = "app.cash.paparazzi")
     apply(plugin = "org.jetbrains.kotlin.android")
+
+    plugins.withId("app.cash.paparazzi") {
+        afterEvaluate {
+            dependencies.constraints {
+                add("testImplementation", "com.google.guava:guava") {
+                    attributes {
+                        attribute(
+                            TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE,
+                            objects.named(
+                                TargetJvmEnvironment::class.java,
+                                TargetJvmEnvironment.STANDARD_JVM,
+                            ),
+                        )
+                    }
+                    because(
+                        "LayoutLib and sdk-common depend on Guava's -jre published variant." +
+                            "See https://github.com/cashapp/paparazzi/issues/906.",
+                    )
+                }
+            }
+        }
+    }
 }
 
 spotless {
