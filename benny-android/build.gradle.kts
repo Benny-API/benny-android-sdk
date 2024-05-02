@@ -2,8 +2,7 @@ import com.vanniktech.maven.publish.SonatypeHost.Companion.S01
 import org.gradle.api.JavaVersion.VERSION_17
 
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.library)
     alias(libs.plugins.maven.publish)
     kotlin("plugin.serialization")
 }
@@ -26,7 +25,7 @@ android {
         release {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
             buildConfigField("String", "VERSION", "\"${sdkVersion}\"")
         }
@@ -49,7 +48,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.bennyapi",
         artifactId = "android",
-        version = sdkVersion
+        version = sdkVersion,
     )
     pom {
         name.set("Benny Android SDK")

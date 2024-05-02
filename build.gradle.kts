@@ -1,21 +1,49 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 plugins {
-    id("com.android.application") version "8.3.0" apply false
-    id("org.jetbrains.kotlin.android") version "1.8.10" apply false
-    id("com.android.library") version "8.3.0" apply false
-    id("com.diffplug.spotless") version "6.22.0" apply true
-    id("com.github.ben-manes.versions") version "0.49.0" apply true
-    kotlin("plugin.serialization") version "1.9.22" apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.serialization) apply false
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.version.catalog.update)
+    alias(libs.plugins.versions)
+}
+
+allprojects {
+    apply(plugin = "com.diffplug.spotless")
+}
+
+subprojects {
+    apply(plugin = "org.jetbrains.kotlin.android")
 }
 
 spotless {
     kotlin {
-        target("**/src/**/*.kt", "**/src/**/*.kts")
-        ktlint("1.0.0")
-            .editorConfigOverride(mapOf("ktlint_standard_function-naming" to "disabled"))
-            .userData(mapOf("android" to "true"))
+        ktlint("1.2.1").editorConfigOverride(mapOf("android" to "true"))
+        target("**/*.kt")
+        targetExclude("build/generated/**")
+        endWithNewline()
     }
     kotlinGradle {
-        target("*.gradle.kts")
-        ktlint("1.0.0").userData(mapOf("android" to "true"))
+        ktlint("1.2.1").editorConfigOverride(mapOf("android" to "true"))
+        target("**/*.kts")
+        endWithNewline()
     }
+}
+
+tasks.withType<DependencyUpdatesTask> {
+    rejectVersionIf {
+        isNonStable(candidate.version)
+    }
+}
+
+/**
+ * Exclude non-stable dependency versions from update check.
+ */
+fun isNonStable(version: String): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable.not()
 }
