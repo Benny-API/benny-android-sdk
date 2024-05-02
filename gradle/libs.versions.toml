@@ -1,8 +1,14 @@
 [versions]
-androidx-core-ktx = "1.13.0"
+android-application = "8.4.0"
+android-library = "8.4.0"
+androidx-core-ktx = "1.13.1"
 appcompat = "1.6.1"
+kotlin = "1.9.23"
 kotlin-serialization = "1.6.3"
 maven-publish = "0.28.0"
+spotless = "6.25.0"
+version-catalog-update = "0.8.4"
+versions = "0.51.0"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
@@ -10,4 +16,11 @@ appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat"
 kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
 
 [plugins]
+android-application = { id = "com.android.application", version.ref = "android-application" }
+android-library = { id = "com.android.library", version.ref = "android-library" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "version-catalog-update" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

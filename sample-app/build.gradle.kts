@@ -2,7 +2,6 @@ import org.gradle.api.JavaVersion.VERSION_17
 
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -48,4 +47,3 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.appcompat)
 }
-
