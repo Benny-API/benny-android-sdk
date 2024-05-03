@@ -3,8 +3,9 @@ import org.gradle.api.JavaVersion.VERSION_17
 
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.maven.publish)
-    kotlin("plugin.serialization")
+    alias(libs.plugins.molecule)
 }
 
 val sdkVersion = "1.1.1"
@@ -37,8 +38,17 @@ android {
         sourceCompatibility = VERSION_17
         targetCompatibility = VERSION_17
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.13"
+    }
     kotlin {
         jvmToolchain(17)
+    }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
     }
 }
 
@@ -79,6 +89,25 @@ mavenPublishing {
 }
 
 dependencies {
+    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.kotlin.serialization)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.appcompat)
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.serialization)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.client.json.serialization)
+    implementation(libs.viewmodel.compose)
+
+    implementation(platform(libs.androidx.compose.bom))
+
+    debugImplementation(libs.androidx.ui.tooling)
+
+    testImplementation(libs.assertk)
+    testImplementation(libs.junit)
+    testImplementation(libs.turbine)
 }

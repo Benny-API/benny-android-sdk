@@ -4,18 +4,19 @@ import android.annotation.SuppressLint
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Context.CLIPBOARD_SERVICE
+import android.view.ViewGroup.LayoutParams
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.webkit.WebView
+import com.bennyapi.common.BennyFlowParameters
+import com.bennyapi.common.BennyFlowParameters.Options.Environment.PRODUCTION
+import com.bennyapi.common.BennyFlowParameters.Options.Environment.SANDBOX
 import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowListener
-import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters
-import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters.Options.Environment.PRODUCTION
-import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters.Options.Environment.SANDBOX
 
 @SuppressLint("SetJavaScriptEnabled", "ViewConstructor")
 internal class EbtBalanceLinkWebView(
     activityContext: Context,
     listener: EbtBalanceLinkFlowListener,
-    parameters: EbtBalanceLinkFlowParameters,
+    parameters: BennyFlowParameters,
 ) : WebView(activityContext) {
     private val baseUrl: String
     private val clipboard = activityContext.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager

@@ -1,8 +1,8 @@
-package com.bennyapi.ebtbalancelink
+package com.bennyapi.common
 
-import com.bennyapi.ebtbalancelink.EbtBalanceLinkFlowParameters.Options.Environment.PRODUCTION
+import com.bennyapi.common.BennyFlowParameters.Options.Environment.PRODUCTION
 
-data class EbtBalanceLinkFlowParameters(
+data class BennyFlowParameters(
     /**
      * The organization ID. Prefixed with "org_".
      */
@@ -11,12 +11,12 @@ data class EbtBalanceLinkFlowParameters(
 ) {
     /**
      * Options to help developers with integrating
-     * the EBT Balance Flow into their Android app.
+     *
      */
     data class Options(
         /**
-         * If true, "setWebContentsDebuggingEnabled" will be enabled
-         * to allow debugging of the WebView in Chrome Developer Tools.
+         * If true Web View, request, etc. logging
+         * wil be enabled to assist with debugging.
          */
         val isDebuggingEnabled: Boolean = false,
 
