@@ -5,6 +5,7 @@ android-library = "8.4.0"
 androidx-core-ktx = "1.13.1"
 appcompat = "1.6.1"
 compose = "2024.05.00"
+detekt = "1.23.6"
 kotlin = "1.9.23"
 kotlin-serialization = "1.6.3"
 maven-publish = "0.28.0"
@@ -28,6 +29,7 @@ kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-j
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-application" }
 android-library = { id = "com.android.library", version.ref = "android-library" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
