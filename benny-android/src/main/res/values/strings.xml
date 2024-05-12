@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="approve_transfer">Approve transfer</string>
+    <string name="check_balance">Check balance</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_pin">Confirm EBT card PIN</string>
+    <string name="edit_card">Edit card</string>
+    <string name="enter_card_number">Enter card number</string>
+    <string name="enter_card_pin">Enter your EBT card PIN</string>
+    <string name="enter_ebt_card_number">Enter EBT card number</string>
+    <string name="network_error">An error occurred. Try again.</string>
+    <string name="next">Next</string>
+    <string name="transfer">Transfer</string>
+</resources>

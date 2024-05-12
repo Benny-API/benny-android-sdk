@@ -17,7 +17,6 @@ allprojects {
 }
 
 subprojects {
-    apply(plugin = "app.cash.paparazzi")
     apply(plugin = "io.gitlab.arturbosch.detekt")
     apply(plugin = "org.jetbrains.kotlin.android")
 

@@ -4,13 +4,14 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.widget.FrameLayout
 import android.widget.FrameLayout.LayoutParams.MATCH_PARENT
+import com.bennyapi.common.BennyFlowParameters
 import com.bennyapi.ebtbalancelink.webview.EbtBalanceLinkWebView
 
 @SuppressLint("ViewConstructor")
 class EbtBalanceLinkFlow(
     activity: Activity,
     listener: EbtBalanceLinkFlowListener,
-    parameters: EbtBalanceLinkFlowParameters,
+    parameters: BennyFlowParameters,
 ) : FrameLayout(activity) {
     private val webView = EbtBalanceLinkWebView(activity, listener, parameters)
 
