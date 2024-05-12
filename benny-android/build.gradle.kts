@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.molecule)
 }
 
-val sdkVersion = "1.1.1"
+val sdkVersion = "1.2.0"
 
 android {
     namespace = "com.bennyapi.android"
