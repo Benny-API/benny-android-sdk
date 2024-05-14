@@ -22,7 +22,7 @@ Install the SDK using the Maven Central Repository.
 
     ```Gradle
     dependencies {
-        implementation("com.bennyapi:benny-android:1.2.0")
+        implementation("com.bennyapi:benny-android:1.2.1")
     }
     ```
 ## EBT Balance Link Flow
